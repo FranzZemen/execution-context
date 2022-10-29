@@ -16,4 +16,8 @@ describe('execution contenxt', () => {
     const ec: ExecutionContext = {execution: {}};
     validateOnly(ec).should.be.true;
   })
+  it('should fail to validateOnly empty execution', () => {
+    const ec: ExecutionContext = {execution: undefined};
+    validateOnly(ec).should.not.be.true;
+  })
 });
