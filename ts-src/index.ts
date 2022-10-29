@@ -9,14 +9,18 @@ export class ExecutionContextDefaults {
   static Authorization = 'None';
   static LocalContext = 'None';
 
-  static default() {
+  static Execution() {
     return {
-      execution: {
-        thread: `${ExecutionContextDefaults.Thread} ${uuidv4()}`,
-        requestId: `${ExecutionContextDefaults.RequestId} ${uuidv4()}`,
-        authorization: ExecutionContextDefaults.Authorization,
-        localContext: ExecutionContextDefaults.LocalContext
-      }
+      thread: `${ExecutionContextDefaults.Thread} ${uuidv4()}`,
+      requestId: `${ExecutionContextDefaults.RequestId} ${uuidv4()}`,
+      authorization: ExecutionContextDefaults.Authorization,
+      localContext: ExecutionContextDefaults.LocalContext
+    };
+  }
+
+  static ExecutionContext() {
+    return {
+      execution: ExecutionContextDefaults.Execution()
     };
   }
 }
@@ -24,7 +28,7 @@ export class ExecutionContextDefaults {
 
 export interface ExecutionContext {
   // We nest in its own field for downward compatibility
-  execution: {
+  execution?: {
     thread?: string; // The thread of execution, which can span across processes (if supplied in headers).
     requestId?: string; // The current process request id, as formed from  the aws request id or some other source
     authorization?: string; // Optional authorization in Bearer Token format Bearer [jwt]
@@ -35,7 +39,8 @@ export interface ExecutionContext {
 export const executionContextSchema = {
   execution: {
     type: 'object',
-    optional: false,
+    optional: true,
+    default: ExecutionContextDefaults.Execution(),
     props: {
       thread: {
         type: 'string',
