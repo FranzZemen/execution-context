@@ -1,5 +1,5 @@
 import deepFreeze from '@franzzemen/deep-freeze';
-import Validator, {ValidationError} from 'fastest-validator';
+import Validator, {ValidationError, ValidationSchema} from 'fastest-validator';
 import {isPromise} from 'util/types';
 import {v4 as uuidv4} from 'uuid';
 
@@ -18,7 +18,7 @@ export class ExecutionContextDefaults {
     };
   }
 
-  static ExecutionContext() {
+  static ExecutionContext(): ExecutionContext {
     return {
       execution: ExecutionContextDefaults.Execution()
     };
@@ -36,7 +36,7 @@ export interface ExecutionContext {
   };
 }
 
-export const executionContextSchema = {
+export const executionContextSchema: ValidationSchema = {
   execution: {
     type: 'object',
     optional: true,
@@ -70,6 +70,7 @@ export const executionContextSchema = {
     }
   }
 };
+
 
 const check = (new Validator({useNewCustomCheckerFunction: true})).compile(executionContextSchema);
 
