@@ -34,6 +34,7 @@ export interface ExecutionContext {
     authorization?: string; // Optional authorization in Bearer Token format Bearer [jwt]
     localContext?: string; // Optional local context - user beware of tracking this!
   };
+  validated?: boolean;
 }
 
 export const executionContextSchema: ValidationSchema = {
@@ -68,28 +69,29 @@ export const executionContextSchema: ValidationSchema = {
         default: true // If checked/defaulted
       }
     }
+  },
+  validated: {
+    type: 'boolean',
+    optional: true,
+    default: false
   }
 };
 
 
 const check = (new Validator({useNewCustomCheckerFunction: true})).compile(executionContextSchema);
 
-export function validateOnly(ec: ExecutionContext): ValidationError[] | true {
+export function validate(ec: ExecutionContext): ValidationError[] | true {
   const result = check(ec);
   if (isPromise(result)) {
     throw new Error('Unexpected, execution context validation is never asynchronous');
   } else {
+    if (result === true) {
+      ec.validated = true;
+    }
     return result;
   }
 }
 
-export function validate(ec: ExecutionContext): ValidationError[] | true {
-  const result = validateOnly(ec);
-  if (result === true) {
-    deepFreeze(ec);
-  }
-  return result;
-}
 
 export function isExecutionContext(ec: any | ExecutionContext): ec is ExecutionContext {
   return 'execution' in ec;
