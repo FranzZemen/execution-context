@@ -1,7 +1,7 @@
 # Read Me
 Execution Context contains information about the currently executing context.  It should not contain application 
 code specifics or functional capability in of itself, and it must remain easily streamable over the wire.  It is 
-leveraged by all @franzzemen packages
+leveraged by nearly all @franzzemen packages
 
 This is the base package for Execution Context and is enhanced by later packages.
 
@@ -15,17 +15,11 @@ This package is published for an ECMAScript module loader.  For CommonJS see bel
 
 ### ECMAScript
 
-Create an execution context, set defaults and freeze it.
+Create an execution context, set defaults and validate it
 
-    import {ExecutionContext, validateOnly as validateEc} from '@franzzemen/execution-context';
+    import {ExecutionContext, validate} from '@franzzemen/execution-context';
     const ec:ExecutionContext = {execution: {}};
-    validateEc(ec);
-
-Only set defaults and validate
-
-    import {ExecutionContext, validateOnly as validateEc} from '@franzzemen/execution-context';
-    const ec:ExecutionContext = {execution: {}};
-    validateEc(ec);
+    validate(ec);
 
 ## CommonJS
 
