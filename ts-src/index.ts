@@ -1,4 +1,3 @@
-import deepFreeze from '@franzzemen/deep-freeze';
 import Validator, {ValidationError, ValidationSchema} from 'fastest-validator';
 import {isPromise} from 'util/types';
 import {v4 as uuidv4} from 'uuid';
