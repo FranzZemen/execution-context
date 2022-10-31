@@ -8,7 +8,8 @@
     "outDir": "build",
     "removeComments": true,
     "declaration": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "emitDeclarationOnly": false
   },
   "include": ["ts-src/**/*.ts","ts-src/**/*.cts", "ts-src/**/*.mts"],
   "exclude": [
