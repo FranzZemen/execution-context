@@ -94,5 +94,5 @@ export function validate(ec: ExecutionContext): ValidationError[] | true {
 
 
 export function isExecutionContext(ec: any | ExecutionContext): ec is ExecutionContext {
-  return 'execution' in ec;
+  return ec && 'execution' in ec;
 }
