@@ -1,4 +1,4 @@
-import Validator, {ValidationError, ValidationSchema} from 'fastest-validator';
+import Validator, {AsyncCheckFunction, SyncCheckFunction, ValidationError, ValidationSchema} from 'fastest-validator';
 import {isPromise} from 'util/types';
 import {v4 as uuidv4} from 'uuid';
 
@@ -76,6 +76,21 @@ export const executionContextSchema: ValidationSchema = {
     default: false
   }
 };
+
+
+export type CheckFunction = AsyncCheckFunction | SyncCheckFunction;
+
+export function isCheckFunction(check: any | CheckFunction): check is CheckFunction {
+  return check !== undefined && 'async' in check;
+}
+
+export function isAsyncCheckFunction(check: any | CheckFunction): check is AsyncCheckFunction {
+  return check !== undefined && check.async === true;
+}
+
+export function isSyncCheckFunction(check: any | CheckFunction): check is SyncCheckFunction {
+  return check !== undefined && check.async === false;
+}
 
 
 const check = (new Validator({useNewCustomCheckerFunction: true})).compile(executionContextSchema);
