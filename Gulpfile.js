@@ -4,10 +4,13 @@ import {npmu as npmuFunc} from '@franzzemen/npmu';
 import * as gulpBase from '@franzzemen/gulp-base';
 import { createRequire } from "module";
 import {fileURLToPath} from 'url';
+import {simpleGit} from 'simple-git';
 
 const requireModule = createRequire(import.meta.url);
-gulpBase.init(requireModule('./package.json'), cwd() + '/tsconfig.src.json', cwd() + '/tsconfig.test.json', 100);
+gulpBase.init(requireModule('./package.json'), cwd(), 100, 'main');
 gulpBase.setMainBranch('main');
+gulpBase.setGenerateCommonJS(true);
+gulpBase.setGenerateES(true);
 
 export const npmu  = (cb) => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -36,6 +39,3 @@ export default gulpBase.default;
 export const patch = gulpBase.patch;
 export const minor = gulpBase.minor;
 export const major = gulpBase.major;
-
-export const npmForceUpdateProject = gulpBase.npmForceUpdateProject;
-export const npmUpdateProject = gulpBase.npmUpdateProject;

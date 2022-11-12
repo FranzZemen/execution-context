@@ -1,7 +1,8 @@
 import chai from 'chai';
 import Validator, {ValidationSchema} from 'fastest-validator';
 import 'mocha';
-import {CheckFunction, isAsyncCheckFunction, isSyncCheckFunction} from '../publish/index.js';
+// @ts-ignore
+import {CheckFunction, isAsyncCheckFunction, isSyncCheckFunction} from '@franzzemen/execution-context';
 
 let should = chai.should();
 let expect = chai.expect;
