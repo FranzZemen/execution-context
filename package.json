@@ -1,6 +1,6 @@
 {
   "name": "@franzzemen/execution-context",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Execution Context ",
   "type": "module",
   "main": "publish/dist/cjs/index.js",
