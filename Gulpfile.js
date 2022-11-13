@@ -7,7 +7,7 @@ import {fileURLToPath} from 'url';
 import {simpleGit} from 'simple-git';
 
 const requireModule = createRequire(import.meta.url);
-gulpBase.init(requireModule('./package.json'), cwd(), 100);
+gulpBase.init(requireModule('./package.json'), cwd(), 5000);
 gulpBase.setGenerateCommonJS(true);
 gulpBase.setGenerateES(true);
 
