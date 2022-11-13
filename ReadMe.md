@@ -1,7 +1,6 @@
 # Read Me
-Execution Context contains information about the currently executing context.  It should not contain application 
-code specifics or functional capability in of itself, and it must remain easily streamable over the wire.  It is 
-leveraged by nearly all @franzzemen packages
+Execution Context contains information about the currently executing context. It is leveraged by nearly all @franzzemen 
+packages.
 
 This is the base package for Execution Context and is enhanced by later packages.
 
@@ -11,24 +10,30 @@ npm i @franzzemen/execution-context
 
 # Usage
 
-This package is published for an ECMAScript module loader.  For CommonJS see below.
+Package can be invoked by both commonjs and es module loaders.  If using typescript, write the same code:
 
-### ECMAScript
+```` typescript
+import {ExecutionContext, validate} from '@franzzemen/execution-context';
+````
 
-Create an execution context, set defaults and validate it
+If using Javascript with es module loading:
 
-    import {ExecutionContext, validate} from '@franzzemen/execution-context';
-    const ec:ExecutionContext = {execution: {}};
-    validate(ec);
+```` javascript
+import {validate} from '@franzzemen/execution-context;
+````
 
-## CommonJS
+If using commonjs module loading:
 
-    // Importing types in typescript from CommonJS is allowed
-    import {ExecutionContext} from '@franzzemen/execution-context';
+```` javascript
+const validate = require('@franzzemen/execution-context').validate;
+````
+One can alway leverage dynamic imports, for example from typescript:
 
-    import('@franzzemen/execution-context')
-        .then(package => {
-            const ec:ExecutionContext = {execution: {}};
-            package.validate(ec);
-        }
-
+```` typescript
+import type {ExecutionContext} from '@franzzemen/execution-context;
+import('@franzzemen/executionContext')
+.then(module => {
+  const validate = module.validate;
+  let ec: ExecutionContext = {};
+  validate(ec);
+});
