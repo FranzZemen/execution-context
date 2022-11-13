@@ -8,7 +8,7 @@ import {ExecutionContext, validate} from '@franzzemen/execution-context';
 const expect = chai.expect;
 const should = chai.should();
 
-describe('execution contenxt', () => {
+describe('execution context', () => {
   it('should set defaults and validate', () => {
     const ec: ExecutionContext = {};
     validate(ec).should.be.true;

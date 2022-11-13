@@ -7,8 +7,8 @@ import {CheckFunction, isAsyncCheckFunction, isSyncCheckFunction} from '@franzze
 let should = chai.should();
 let expect = chai.expect;
 
-describe('app-utility tests', () => {
-  describe('fastest-validator-util/fastest-validator-util.test', () => {
+describe('execution-context', () => {
+  describe('fastest-validator-util.test', () => {
     it('should identify a synchronous check', done => {
       const schema: ValidationSchema = {
         something: {
