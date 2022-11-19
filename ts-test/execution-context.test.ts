@@ -2,8 +2,7 @@ import 'mocha';
 import * as chai from 'chai';
 import {inspect} from 'util';
 
-// @ts-ignore
-import {ExecutionContext, validate} from '@franzzemen/execution-context';
+import {ExecutionContext,validate} from '../publish/cjs/index.js';
 
 const expect = chai.expect;
 const should = chai.should();
