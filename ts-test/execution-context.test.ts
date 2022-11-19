@@ -2,7 +2,7 @@ import 'mocha';
 import * as chai from 'chai';
 import {inspect} from 'util';
 
-import {ExecutionContext,validate} from '../publish/cjs/index.js';
+import {ExecutionContext,validate} from '../publish/mjs/index.js';
 
 const expect = chai.expect;
 const should = chai.should();

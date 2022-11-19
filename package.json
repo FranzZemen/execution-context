@@ -1,6 +1,6 @@
 {
   "name": "@franzzemen/execution-context",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Execution Context ",
   "type": "module",
   "main": "./publish/cjs/index.js",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/FranzZemen/execution-context#readme",
   "devDependencies": {
-    "@franzzemen/gulp-base": "^19.0.0",
+    "@franzzemen/gulp-base": "^19.0.1",
     "@franzzemen/npmu": "^4.0.4",
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.0",
