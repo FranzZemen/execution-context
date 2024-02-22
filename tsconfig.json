@@ -1,12 +1,8 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "Node",
-    "sourceMap": true,
-    "removeComments": true,
-    "declaration": true,
-    "esModuleInterop": true,
-  },
-  "exclude": [
-    "node_modules"
+  "files": [],
+  "include": [],
+  "references": [
+    {"path": "./src/project/tsconfig.json"},
+    {"path": "./src/test/tsconfig.json"}
   ]
 }

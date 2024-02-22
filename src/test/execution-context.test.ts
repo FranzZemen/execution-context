@@ -2,7 +2,7 @@ import 'mocha';
 import * as chai from 'chai';
 import {inspect} from 'util';
 
-import {ExecutionContext,validate} from '../publish/mjs/index.js';
+import {ExecutionContext,validate} from '@franzzemen/execution-context';
 
 const expect = chai.expect;
 const should = chai.should();
@@ -11,7 +11,7 @@ describe('execution context', () => {
   it('should set defaults and validate', () => {
     const ec: ExecutionContext = {};
     validate(ec).should.be.true;
-    ec.execution.thread.should.exist;
+    expect(ec?.execution?.thread).to.exist;
     console.log(inspect(ec, false, 5), 'Execution Context');
   })
   it('should validateOnly empty optional fields', () => {
@@ -19,7 +19,7 @@ describe('execution context', () => {
     validate(ec).should.be.true;
   })
   it('should succeed to validateOnly empty execution', () => {
-    const ec: ExecutionContext = {execution: undefined};
+    const ec: ExecutionContext = {};
     validate(ec).should.be.true;
   })
 });

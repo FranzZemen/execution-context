@@ -3,17 +3,11 @@
   "version": "5.0.2",
   "description": "Execution Context ",
   "type": "module",
-  "main": "./publish/cjs/index.js",
-  "module": "publish/mjs/index.js",
-  "types": "publish/mjs/index.d.ts",
   "exports": {
     ".": {
-      "import": "./publish/mjs/index.js",
-      "require": "./publish/cjs/index.js"
+      "types": "./out/project/types/index.d.ts",
+      "import": "./out/project/index.js"
     }
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -29,21 +23,16 @@
   },
   "homepage": "https://github.com/FranzZemen/execution-context#readme",
   "devDependencies": {
-    "@franzzemen/gulp-base": "^19.0.1",
-    "@franzzemen/npmu": "^4.0.4",
-    "@types/chai": "^4.3.4",
-    "@types/mocha": "^10.0.0",
-    "@types/moment": "^2.13.0",
-    "@types/node": "^18.11.9",
-    "@types/uuid": "^8.3.4",
-    "chai": "^4.3.7",
-    "gulp": "^4.0.2",
-    "gulp-mocha": "^8.0.0",
-    "mocha": "^10.1.0",
-    "typescript": "^4.9.3"
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.19",
+    "@types/uuid": "^9.0.8",
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "uuid": "^9.0.0",
-    "fastest-validator": "^1.15.0"
+    "@franzzemen/fastest-validator-wrapper": "^0.0.2",
+    "uuid": "^9.0.1"
   }
 }

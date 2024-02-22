@@ -1,6 +1,7 @@
-import Validator, {AsyncCheckFunction, SyncCheckFunction, ValidationError, ValidationSchema} from 'fastest-validator';
-import {isPromise} from 'util/types';
+import {AsyncCheckFunction, SyncCheckFunction, ValidationError, ValidationSchema} from 'fastest-validator';
 import {v4 as uuidv4} from 'uuid';
+import {isPromise} from "node:util/types";
+import {getValidator} from "@franzzemen/fastest-validator-wrapper";
 
 export class ExecutionContextDefaults {
   static Thread = `Thread:`;
@@ -93,7 +94,7 @@ export function isSyncCheckFunction(check: any | CheckFunction): check is SyncCh
 }
 
 
-const check = (new Validator({useNewCustomCheckerFunction: true})).compile(executionContextSchema);
+const check = getValidator().compile(executionContextSchema);
 
 export function validate(ec: ExecutionContext): ValidationError[] | true {
   const result = check(ec);

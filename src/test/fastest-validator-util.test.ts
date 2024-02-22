@@ -1,8 +1,8 @@
-import chai from 'chai';
+import * as chai from 'chai';
 import Validator, {ValidationSchema} from 'fastest-validator';
 import 'mocha';
-// @ts-ignore
 import {CheckFunction, isAsyncCheckFunction, isSyncCheckFunction} from '@franzzemen/execution-context';
+import {getValidator} from "@franzzemen/fastest-validator-wrapper";
 
 let should = chai.should();
 let expect = chai.expect;
@@ -19,12 +19,13 @@ describe('execution-context', () => {
           }
         }
       }
-      const check: CheckFunction = (new Validator()).compile(schema);
+      const check: CheckFunction = getValidator().compile(schema);
       isSyncCheckFunction(check).should.be.true;
       isAsyncCheckFunction(check).should.be.false;
       done();
     })
     it('should identify an asynchronous check', done => {
+      // @ts-ignore
       function dummyAsync(v): Promise<number> {
         return Promise.resolve(v);
       }
@@ -37,14 +38,15 @@ describe('execution-context', () => {
             someProp: {type: 'boolean', optional: true},
             username: {
               type: "number",
-              custom: async (v, errors) => {
+              // @ts-ignore
+              custom: async (v) => {
                 return dummyAsync(v);
               }
             }
           }
         }
       }
-      const check: CheckFunction = (new Validator()).compile(schema);
+      const check: CheckFunction = getValidator().compile(schema);
       isAsyncCheckFunction(check).should.be.true;
       isSyncCheckFunction(check).should.be.false;
       done();
