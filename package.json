@@ -33,6 +33,9 @@
   },
   "dependencies": {
     "@franzzemen/fastest-validator-wrapper": "^0.0.2",
+    "@types/lodash": "^4.17.0",
+    "fastest-validator": "^1.17.0",
+    "lodash": "^4.17.21",
     "uuid": "^9.0.1"
   }
 }
