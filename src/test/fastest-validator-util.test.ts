@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import Validator, {ValidationSchema} from 'fastest-validator';
+import {ValidationSchema} from 'fastest-validator';
 import 'mocha';
 import {CheckFunction, isAsyncCheckFunction, isSyncCheckFunction} from '@franzzemen/execution-context';
 import {getValidator} from "@franzzemen/fastest-validator-wrapper";

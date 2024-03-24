@@ -1,6 +1,6 @@
 {
   "name": "@franzzemen/execution-context",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Execution Context ",
   "type": "module",
   "exports": {
@@ -34,9 +34,7 @@
   },
   "dependencies": {
     "@franzzemen/fastest-validator-wrapper": "^2.0.1",
-    "@types/lodash": "^4.17.0",
     "fastest-validator": "^1.17.0",
-    "lodash": "^4.17.21",
     "uuid": "^9.0.1"
   }
 }
