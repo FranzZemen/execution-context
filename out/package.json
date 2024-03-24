@@ -1,6 +1,6 @@
 {
   "name": "@franzzemen/execution-context",
-  "version": "5.0.8",
+  "version": "6.0.0",
   "description": "Execution Context ",
   "type": "module",
   "exports": {
@@ -33,7 +33,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@franzzemen/fastest-validator-wrapper": "^2.0.0",
+    "@franzzemen/fastest-validator-wrapper": "^2.0.1",
     "@types/lodash": "^4.17.0",
     "fastest-validator": "^1.17.0",
     "lodash": "^4.17.21",

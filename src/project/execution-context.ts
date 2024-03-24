@@ -25,7 +25,7 @@ export class ExecutionContextDefaults {
   }
 }
 
-export interface Execution {
+export type Execution = {
   thread?: string; // The thread of execution, which can span across processes (if supplied in headers).
   requestId?: string; // The current process request id, as formed from  the aws request id or some other source
   authorization?: string; // Optional authorization in Bearer Token format Bearer [jwt]
@@ -33,81 +33,11 @@ export interface Execution {
 }
 
 
-export interface ExecutionContext {
+export type ExecutionContext = {
   // We nest in its own field for downward compatibility
   execution?: Execution;
   validated?: boolean;
 }
-
-export const executionSchema: ValidationSchema = {
-  thread: {
-    type: 'string',
-    optional: true,
-    default: ExecutionContextDefaults.Thread
-  },
-  requestId: {
-    type: 'string',
-    optional: true,
-    default: ExecutionContextDefaults.RequestId
-  },
-  authorization: {
-    type: 'string',
-    optional: true,
-    default: ExecutionContextDefaults.Authorization
-  },
-  localContext: {
-    type: 'string',
-    optional: true,
-    default: ExecutionContextDefaults.LocalContext
-  }
-}
-
-export const executionSchemaWrapper: ValidationSchema = {
-  type: 'object',
-  optional: true,
-  default: ExecutionContextDefaults.Execution(),
-  props: executionSchema
-}
-
-export const executionContextSchema: ValidationSchema = {
-  execution: executionSchemaWrapper,
-  validated: {
-    type: 'boolean',
-    optional: true,
-    default: false
-  }
-};
-
-
-export type CheckFunction = AsyncCheckFunction | SyncCheckFunction;
-
-export function isCheckFunction(check: any | CheckFunction): check is CheckFunction {
-  return check !== undefined && 'async' in check;
-}
-
-export function isAsyncCheckFunction(check: any | CheckFunction): check is AsyncCheckFunction {
-  return check !== undefined && check.async === true;
-}
-
-export function isSyncCheckFunction(check: any | CheckFunction): check is SyncCheckFunction {
-  return check !== undefined && check.async === false;
-}
-
-
-const check = getValidator().compile(executionContextSchema);
-
-export function validate(ec: ExecutionContext): ValidationError[] | true {
-  const result = check(ec);
-  if (isPromise(result)) {
-    throw new Error('Unexpected, execution context validation is never asynchronous');
-  } else {
-    if (result === true) {
-      ec.validated = true;
-    }
-    return result;
-  }
-}
-
 
 export function isExecutionContext(ec: any | ExecutionContext): ec is ExecutionContext {
   return ec && 'execution' in ec;
