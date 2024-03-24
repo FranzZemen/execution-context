@@ -3,7 +3,7 @@ Created by Franz Zemen 03/24/2024
 License Type: MIT
 */
 
-import {AsyncCheckFunction, SyncCheckFunction, ValidationSchema} from "fastest-validator";
+import {AsyncCheckFunction, SyncCheckFunction, ValidationSchema, ValidatorConstructorOptions} from "fastest-validator";
 import {getValidator} from "@franzzemen/fastest-validator-wrapper";
 
 export type CheckFunction = AsyncCheckFunction | SyncCheckFunction;
@@ -20,8 +20,8 @@ export function isSyncCheckFunction(check: any | CheckFunction): check is SyncCh
   return check !== undefined && check.async === false;
 }
 
-export function getSyncCheckFunction(schema: ValidationSchema): SyncCheckFunction {
-  const checkFunction: SyncCheckFunction | AsyncCheckFunction = getValidator().compile(schema);
+export function getSyncCheckFunction(schema: ValidationSchema, options: ValidatorConstructorOptions = {useNewCustomCheckerFunction: true}): SyncCheckFunction {
+  const checkFunction: SyncCheckFunction | AsyncCheckFunction = getValidator(options).compile(schema);
   if (isSyncCheckFunction(checkFunction)) {
     return checkFunction;
   } else {
@@ -29,8 +29,8 @@ export function getSyncCheckFunction(schema: ValidationSchema): SyncCheckFunctio
   }
 }
 
-export function getAsyncCheckFunction(schema: ValidationSchema): AsyncCheckFunction {
-  const checkFunction: SyncCheckFunction | AsyncCheckFunction = getValidator().compile(schema);
+export function getAsyncCheckFunction(schema: ValidationSchema, options: ValidatorConstructorOptions = {useNewCustomCheckerFunction: true}): AsyncCheckFunction {
+  const checkFunction: SyncCheckFunction | AsyncCheckFunction = getValidator(options).compile(schema);
   if (isAsyncCheckFunction(checkFunction)) {
     return checkFunction;
   } else {
