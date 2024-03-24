@@ -1,6 +1,6 @@
 {
   "name": "@franzzemen/execution-context",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Execution Context ",
   "type": "module",
   "exports": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/FranzZemen/execution-context#readme",
   "devDependencies": {
-    "@franzzemen/build-system": "^4.0.2",
+    "@franzzemen/build-system": "^4.1.0",
     "@types/chai": "^4.3.14",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.11.30",
