@@ -32,7 +32,7 @@ const executionSchema: ValidationSchema = {
   }
 }
 
-const executionSchemaWrapper: ValidationSchema = {
+export const executionSchemaWrapper: ValidationSchema = {
   type: 'object',
   optional: true,
   default: ExecutionContextDefaults.Execution(),

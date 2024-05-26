@@ -22,18 +22,18 @@
   },
   "homepage": "https://github.com/FranzZemen/execution-context#readme",
   "devDependencies": {
-    "@franzzemen/build-system": "^4.1.0",
-    "@types/chai": "^4.3.14",
+    "@franzzemen/build-system": "^5.1.0",
+    "@types/chai": "^4.3.16",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.12.12",
     "@types/uuid": "^9.0.8",
-    "chai": "^5.1.0",
-    "mocha": "^10.3.0",
-    "typescript": "^5.4.3"
+    "chai": "^5.1.1",
+    "mocha": "^10.4.0",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@franzzemen/fastest-validator-wrapper": "^2.0.1",
-    "fastest-validator": "^1.17.0",
+    "@franzzemen/fastest-validator-wrapper": "^2.0.2",
+    "fastest-validator": "^1.18.0",
     "uuid": "^9.0.1"
   }
 }
