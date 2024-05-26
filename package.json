@@ -1,6 +1,6 @@
 {
   "name": "@franzzemen/execution-context",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "description": "Execution Context ",
   "type": "module",
   "exports": {
